@@ -1,10 +1,7 @@
-from os import write
 from PIL.Image import Image
 import pyautogui as pag
 from PIL import ImageChops
 from bs4 import BeautifulSoup
-import win32clipboard as wc
-import win32con
 import pyperclip
 
 __sizex__, __sizey__ = pag.size()
@@ -80,8 +77,8 @@ if __name__ == '__main__':
             findLink("divider.png")
             pag.sleep(2)
             savePage()
-            pag.sleep(30)
-            #pag.confirm(text="Please wait until download is completed.",title="Downloading",buttons=['Completed']);
+            #pag.sleep(30)
+            pag.confirm(text="Please wait until download is completed.",title="Downloading",buttons=['Completed']);
             answer = getAnswer()
             print(answer)
             pag.sleep(1)
