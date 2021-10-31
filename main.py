@@ -10,7 +10,7 @@ DeltaY2 = 120
 
 def findLink(divider_filename):
     pos = list(pag.locateAllOnScreen(divider_filename))
-    center = pag.center(pos[1])
+    center = pag.center(pos[2])
     pag.moveTo(center.x,center.y,duration=0.2)
     pag.sleep(0.3)
     im1 = pag.screenshot()
@@ -39,13 +39,15 @@ def getAnswer():
 def submitAnswer(answer):
     center = pag.locateCenterOnScreen("Submit.png",confidence=0.9)
     if center == None:
+        with pag.hold('ctrl'):
+            pag.press('w')
         return
     pag.moveTo(*center, duration=0.1)
     pag.click()
     pag.press('tab')
     pag.sleep(0.1)
     pag.press('F12')
-    pag.sleep(0.2)
+    pag.sleep(0.3)
     for chr in answer[::-1]:
         pyperclip.copy("document.querySelector(\"textarea\").setRangeText('"+chr+"')")
         with pag.hold('ctrl'):
@@ -69,16 +71,17 @@ def submitAnswer(answer):
 
 if __name__ == '__main__':
     pag.confirm(text="",title="Test Title",buttons=['Begin']);
-    N=1;
+    N=5;
     try:
         for i in range(N):
             pag.scroll(-300)
-            pag.sleep(2)
+            pag.sleep(4)
             findLink("divider.png")
             pag.sleep(2)
             savePage()
-            #pag.sleep(30)
-            pag.confirm(text="Please wait until download is completed.",title="Downloading",buttons=['Completed']);
+            pag.sleep(60
+            )
+            #pag.confirm(text="Please wait until download is completed.",title="Downloading",buttons=['Completed']);
             answer = getAnswer()
             print(answer)
             pag.sleep(1)
