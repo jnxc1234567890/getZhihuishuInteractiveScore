@@ -4,7 +4,7 @@ A Python script for automatically participating in Interactive Zone in Zhihuishu
 ## Requirement
 The script requires:
 
-```PIL```,```pyautogui```,```bs4```,```pyperclip```
+```PIL```,```pyautogui```,```bs4```,```pyperclip```,```opencv2```
 
 ## General description
 
